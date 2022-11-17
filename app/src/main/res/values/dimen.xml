@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="common_button_text_size">20sp</dimen>
+    <dimen name="textview_text_size">28sp</dimen>
+    <dimen name="common_operator_text_size">29sp</dimen>
+    <dimen name="common_button_margin">2.5dp</dimen>
+</resources>
