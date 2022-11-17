@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,8 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Calculator mCalculator;
     Boolean isAdvance = false;
 
-    //ArrayAdapter<String> itemsAdapter;
-    //   ArrayList<String> histories;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         advance = findViewById(R.id.versionChangeButton);
         mTextView = findViewById(R.id.textview);
         historyTextView = findViewById(R.id.historyTextView);
+        historyTextView.setMovementMethod(new ScrollingMovementMethod());
+
         mCalculator = new Calculator();
         // histories=new ArrayList<>();
     }
@@ -102,9 +103,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 mTextView.setText(String.format("%s %s", myText, newText));
                 checkValue();
-                //  checkValidation(((Button) view).getText().toString());
         }
-        //checkValidation(mTextView.getText().toString());
+
     }
 
     private void checkValue() {
@@ -146,18 +146,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void enterButtonClicked(String myText, String newText) {
-        //     histories.clear();
         String result = mCalculator.calculate();
         mTextView.setText(String.format("%s %s %s", myText, newText, result));
-        //   mCalculator.addHistory(mTextView.getText().toString());
-        //      histories=mCalculator.getHistoryList();
         String s1 = historyTextView.getText().toString();
         historyTextView.setText(String.format("%s\n%s", s1, mTextView.getText().toString()));
         mCalculator.emptyList();
-        /*for (int i = 0; i < histories.size(); i++) {
-            historyTextView.setText(histories.get(i)+"\n");
-        }*/
-        // listView.setAdapter(itemsAdapter);
 
     }
 
@@ -179,83 +172,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-    }
-
-    private void setClickableButtons() {
-        add.setClickable(false);
-        sub.setClickable(false);
-        mul.setClickable(false);
-        div.setClickable(false);
-        equal.setClickable(false);
-
-        one.setClickable(true);
-        two.setClickable(true);
-        three.setClickable(true);
-        four.setClickable(true);
-        five.setClickable(true);
-        six.setClickable(true);
-        seven.setClickable(true);
-        eight.setClickable(true);
-        nine.setClickable(true);
-        zero.setClickable(true);
-    }
-
-    private void checkValidation(String text) {
-        if (text.equals("+") || text.equals("-") || text.equals("*") || text.equals("/")) {
-            add.setClickable(false);
-            sub.setClickable(false);
-            mul.setClickable(false);
-            div.setClickable(false);
-            equal.setClickable(false);
-
-            one.setClickable(true);
-            two.setClickable(true);
-            three.setClickable(true);
-            four.setClickable(true);
-            five.setClickable(true);
-            six.setClickable(true);
-            seven.setClickable(true);
-            eight.setClickable(true);
-            nine.setClickable(true);
-            zero.setClickable(true);
-
-
-        } else if (text.equals("1") || text.equals("2") || text.equals("3") || text.equals("4")
-                || text.equals("5") || text.equals("6") || text.equals("7") || text.equals("8")
-                || text.equals("9") || text.equals("0")) {
-            one.setClickable(false);
-            two.setClickable(false);
-            three.setClickable(false);
-            four.setClickable(false);
-            five.setClickable(false);
-            six.setClickable(false);
-            seven.setClickable(false);
-            eight.setClickable(false);
-            nine.setClickable(false);
-            zero.setClickable(false);
-
-            add.setClickable(true);
-            sub.setClickable(true);
-            mul.setClickable(true);
-            div.setClickable(true);
-            equal.setClickable(true);
-        } else {
-            add.setClickable(false);
-            sub.setClickable(false);
-            mul.setClickable(false);
-            div.setClickable(false);
-            equal.setClickable(false);
-
-            one.setClickable(true);
-            two.setClickable(true);
-            three.setClickable(true);
-            four.setClickable(true);
-            five.setClickable(true);
-            six.setClickable(true);
-            seven.setClickable(true);
-            eight.setClickable(true);
-            nine.setClickable(true);
-            zero.setClickable(true);
-        }
     }
 }
