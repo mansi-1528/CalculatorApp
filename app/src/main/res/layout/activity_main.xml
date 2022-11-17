@@ -275,17 +275,9 @@
         android:textStyle="bold"
         android:text="@string/advance_with_history"
         />
-
-    <ListView
-        android:id="@+id/historyListView"
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="0dp"
-        android:layout_weight="4.3" />
     <TextView
         android:id="@+id/historyTextView"
         android:layout_width="match_parent"
-     android:text="history"
         android:textColor="@color/black"
         android:padding="8dp"
         android:visibility="invisible"
