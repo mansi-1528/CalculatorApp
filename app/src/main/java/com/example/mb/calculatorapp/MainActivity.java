@@ -1,12 +1,12 @@
 package com.example.mb.calculatorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonClear:
                 mTextView.setText("");
                 mCalculator.emptyList();
-                mTextView.setTextColor(getResources().getColor(R.color.black));
+                mTextView.setTextColor(ContextCompat.getColor(getApplicationContext(),
+                        R.color.black));
                 break;
 
             case R.id.buttonEnter:
@@ -116,7 +117,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (textList.get(i - 1).equals("+") || textList.get(i - 1).equals("-")
                             || textList.get(i - 1).equals("*") || textList.get(i - 1).equals("/")) {
                         Toast.makeText(this, "invalid value", Toast.LENGTH_SHORT).show();
-                        mTextView.setTextColor(getResources().getColor(R.color.red));
+                        //mTextView.setTextColor(getResources().getColor(R.color.red));
+                        mTextView.setTextColor(ContextCompat.getColor(getApplicationContext(),
+                                R.color.red));
                     }
 
                 }
@@ -134,7 +137,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             || textList.get(i-1).equals("9") || textList.get(i-1).equals("0")
 
                     ) {
-                        mTextView.setTextColor(getResources().getColor(R.color.red));
+                        mTextView.setTextColor(ContextCompat.getColor(getApplicationContext(),
+                                R.color.red));
 
                         Toast.makeText(this, "invalid value", Toast.LENGTH_SHORT).show();
                     }
@@ -160,14 +164,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //  setClickableButtons();
         if (!isAdvance) {
             advance.setText(R.string.standard_no_history);
-            advance.setBackgroundColor(getResources().getColor(R.color.light_grey1));
+            mTextView.setTextColor(ContextCompat.getColor(getApplicationContext(),
+                    R.color.light_grey1));
             historyTextView.setVisibility(View.VISIBLE);
             historyTextView.setText("");
             isAdvance = true;
         } else {
             isAdvance = false;
             advance.setText(R.string.advance_with_history);
-            advance.setBackgroundColor(getResources().getColor(R.color.light_purple));
+            mTextView.setTextColor(ContextCompat.getColor(getApplicationContext(),
+                    R.color.light_purple));
             historyTextView.setVisibility(View.GONE);
 
         }
